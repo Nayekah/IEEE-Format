@@ -1,12 +1,13 @@
 # IEEE-Format
 
-Reusable IEEE conference paper template. The paper source is in `paper/`
+Reusable IEEE conference paper template for technical reports, research drafts,
+class assignments, and project documentation. The paper source is in `paper/`.
 
 - IEEEtran conference layout
 - XeLaTeX with Times New Roman fallback handling
 - modular `paper/sections/*.tex` files
 - BibTeX references in `paper/references.bib`
-- course footer and compact section styling
+- compact footer and section styling
 - local `paper/IEEEtran.cls` for reproducible compilation
 
 ## Requirements

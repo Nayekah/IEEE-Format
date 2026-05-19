@@ -2,23 +2,23 @@
 
 \subsection{Implementation-Oriented Paper}
 
-An implementation-oriented cryptography paper can use the following narrative arc. The introduction motivates a concrete operational problem, such as protecting firmware updates, recovering encrypted backups, or authenticating messages between constrained devices. The background then explains only the primitives needed by the implementation. If the paper uses AES-GCM, it should define nonce handling, authentication tags, and associated data. If the paper uses digital signatures, it should define key generation, signing, verification, and the security property expected from the scheme.
+An implementation-oriented technical paper can use the following narrative arc. The introduction motivates a concrete operational problem, such as reducing latency, improving reliability, automating a workflow, processing a dataset, or evaluating a model. The background then explains only the concepts needed by the implementation. If the paper uses a machine learning model, it should define the task, input representation, baseline, and metrics. If the paper describes a software system, it should define the components, interfaces, workload, and expected behavior.
 
-The design section should describe the system boundary. For example, a firmware-signing report can distinguish the signing machine, update package, bootloader, policy metadata, and device state. A secret-sharing report can distinguish dealer, shareholder, recovery client, corrupted share model, and reconstruction threshold. Clear boundaries make evaluation easier because the paper can state which component is measured and which component is assumed.
+The design section should describe the system boundary. For example, a data-processing report can distinguish ingestion, cleaning, transformation, storage, and reporting stages. A web-system report can distinguish client, server, database, cache, and external service boundaries. Clear boundaries make evaluation easier because the paper can state which component is measured and which component is assumed.
 
-The implementation section should map the design to code. It should name the programming language, libraries, modules, data structures, and command-line entry points. A concise module table is often enough. The text should then explain details that affect correctness: serialization format, randomness source, error handling, parameter validation, and test scenario generation. These details are important because many cryptographic failures come from integration mistakes rather than from breaking the underlying primitive.
+The implementation section should map the design to code. It should name the programming language, libraries, modules, data structures, and command-line entry points. A concise module table is often enough. The text should then explain details that affect correctness: input format, preprocessing, error handling, parameter validation, persistence, and test scenario generation. These details are important because many project failures come from integration mistakes rather than from the central algorithm alone.
 
-The evaluation section should be organized around scenarios. A scenario describes the input condition, expected behavior, and observed result. For example, a verification system may test valid packages, modified payloads, stale versions, unknown signers, and unsupported algorithms. A threshold-recovery system may test enough shares, insufficient shares, missing shares, corrupted shares, and mixed missing-corrupted cases. Each scenario should have a reason to exist.
+The evaluation section should be organized around scenarios. A scenario describes the input condition, expected behavior, and observed result. For example, a web application may test normal traffic, burst traffic, invalid input, cache misses, and dependency failure. A model-evaluation paper may test clean data, noisy data, class imbalance, out-of-distribution samples, and baseline comparisons. Each scenario should have a reason to exist.
 
 \subsection{Analysis-Oriented Paper}
 
-An analysis-oriented paper can use a different structure. After the introduction and background, it may define a threat model, compare several candidate designs, and evaluate them against qualitative criteria. This is appropriate when the work studies protocol choices, deployment tradeoffs, or migration policies. The key requirement is that the comparison criteria are stated before conclusions are drawn. Criteria may include security assumption, key size, signature size, implementation maturity, compatibility, failure behavior, and migration risk.
+An analysis-oriented paper can use a different structure. After the introduction and background, it may define an evaluation model, compare several candidate designs, and evaluate them against qualitative criteria. This is appropriate when the work studies architecture choices, deployment tradeoffs, workflow policies, model choices, or system constraints. The key requirement is that the comparison criteria are stated before conclusions are drawn. Criteria may include accuracy, latency, complexity, cost, maintainability, compatibility, failure behavior, and operational risk.
 
-For example, a post-quantum migration paper might compare a classical-only policy, a post-quantum-only policy, an either-valid hybrid policy, and a both-required hybrid policy. The analysis should explain what each policy accepts, what each policy rejects, and which downgrade paths remain. Even if the measurements are simple, the paper becomes useful when it connects policy behavior to a concrete attacker goal.
+For example, a deployment paper might compare a single-server design, a cached design, a queue-based design, and a replicated design. The analysis should explain what each design improves, what each design complicates, and which failure modes remain. Even if the measurements are simple, the paper becomes useful when it connects design behavior to a concrete user or operator goal.
 
 \subsection{Suggested Section Map}
 
-Table~\ref{tab:section-map} gives a reusable section map for a six-page course report. The page allocation is approximate and should be adjusted based on the assignment.
+Table~\ref{tab:section-map} gives a reusable section map for a six-page technical report. The page allocation is approximate and should be adjusted based on the assignment or venue.
 
 \begin{table}[H]
 \centering
@@ -31,8 +31,8 @@ Table~\ref{tab:section-map} gives a reusable section map for a six-page course r
 \textbf{Part} & \textbf{Pages} & \textbf{Main purpose} \\
 \midrule
 Abstract and intro & 0.8--1.0 & State problem, method, and contribution. \\
-Background & 0.8--1.0 & Define primitives and assumptions. \\
-Design & 1.0 & Explain architecture and security goals. \\
+Background & 0.8--1.0 & Define concepts and assumptions. \\
+Design & 1.0 & Explain architecture and goals. \\
 Implementation & 1.0 & Map design to concrete code and parameters. \\
 Evaluation & 1.2--1.5 & Report scenarios, measurements, and outcomes. \\
 Conclusion and admin & 0.5 & Summarize findings, repository, and statement. \\

@@ -6,17 +6,17 @@ IEEE conference papers use a dense two-column format intended for technical comm
 
 The reference repositories use XeLaTeX because their paper sources select Times New Roman when available and fall back to TeX Gyre Termes otherwise. That behavior is preserved here through \texttt{fontspec}. If a machine has Times New Roman installed, the output will match common IEEE-style typography closely. If it does not, TeX Gyre Termes provides a compatible serif font for local builds.
 
-\subsection{Cryptography Paper Expectations}
+\subsection{Technical Paper Expectations}
 
-A cryptography report should normally separate assumptions, construction, implementation, and evaluation. The background should define the primitives or protocols used by the work. The construction section should state what is being built. The implementation section should describe concrete modules, parameters, data formats, and execution flow. The evaluation section should report measured or simulated results rather than only restating theory. Even when a paper is short, this separation helps readers distinguish established knowledge from the author's contribution.
+A technical report should normally separate assumptions, design, implementation, and evaluation. The background should define the concepts, systems, datasets, methods, or standards used by the work. The design section should state what is being built or analyzed. The implementation section should describe concrete modules, parameters, data formats, and execution flow. The evaluation section should report measured, simulated, or observed results rather than only restating theory. Even when a paper is short, this separation helps readers distinguish established knowledge from the author's contribution.
 
-Cryptographic notation should be explicit. For example, let $K$ denote a symmetric key, let $M$ denote a message, and let $C$ denote a ciphertext. An authenticated encryption interface can be summarized as
+Technical notation should be explicit. For example, let $x$ denote an input vector, let $f$ denote a model or system under test, and let $y$ denote an observed output. A simple evaluation interface can be summarized as
 \begin{equation}
-  C, T \leftarrow \operatorname{Enc}_{K}(N, A, M),
-  \label{eq:aead}
+  y \leftarrow f(x; \theta),
+  \label{eq:model}
 \end{equation}
-where $N$ is a nonce, $A$ is associated data, and $T$ is an authentication tag. The corresponding verification and decryption operation should either return $M$ or reject. This level of notation is usually enough for a systems-oriented course paper, while a theory paper may require more formal definitions.
+where $\theta$ represents configuration, parameters, or learned weights. A measurement can then compare $y$ against an expected output, baseline, or target metric. This level of notation is usually enough for a systems-oriented paper, while a theory-heavy paper may require more formal definitions.
 
 \subsection{Reproducibility}
 
-Local reproducibility matters because a paper source is not complete until it can be compiled again. A repository should contain the main \texttt{.tex} file, section files, bibliography file, required figures, and any class files that are not guaranteed to exist in the default installation. Build artifacts such as \texttt{.aux}, \texttt{.log}, \texttt{.bbl}, and \texttt{.pdf} are intentionally ignored in this template. They can be regenerated from source and should not obscure meaningful changes in version control.
+Local reproducibility matters because a paper source is not complete until it can be compiled again. Reproducible research practice emphasizes keeping source, data, scripts, and documentation organized enough that results can be regenerated later \cite{peng2011,wilson2017}. A repository should contain the main \texttt{.tex} file, section files, bibliography file, required figures, and any class files that are not guaranteed to exist in the default installation. Build artifacts such as \texttt{.aux}, \texttt{.log}, \texttt{.bbl}, and \texttt{.pdf} are intentionally ignored in this template. They can be regenerated from source and should not obscure meaningful changes in version control.

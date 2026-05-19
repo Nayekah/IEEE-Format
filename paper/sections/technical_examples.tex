@@ -34,13 +34,24 @@ Figures should be readable in two-column format. Use vector graphics or high-res
 \label{fig:architecture}
 \end{figure}
 
+\subsection{Two-Column Figure}
+
+Wide figures can span both columns by using the \texttt{figure*} environment. In IEEE-style layouts, wide floats usually move to the top of the next page, so the text should introduce them before the figure appears.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.82\textwidth]{../images/abcd.jpg}
+\caption{Example two-column figure included from \texttt{images/abcd.jpg}. Use this format for diagrams, screenshots, timelines, or result plots that would be too cramped in a single column.}
+\label{fig:two-column-image}
+\end{figure*}
+
 \subsection{Result Table}
 
 Tables should use concise labels and avoid excessive grid lines. Table~\ref{tab:results} illustrates a compact evaluation table. The values are dummy numbers and should be replaced by real measurements.
 
 \begin{table}[H]
 \centering
-\caption{Example result table for a cryptography experiment}
+\caption{Example result table for a technical experiment}
 \label{tab:results}
 \begin{tabular}{lrrr}
 \toprule
@@ -54,11 +65,31 @@ Insufficient material & 25 & 0 & 0.9 \\
 \end{tabular}
 \end{table}
 
+\subsection{Two-Column Table}
+
+Wide tables can span both columns by using the \texttt{table*} environment. This is useful when a comparison has many columns or when descriptions would wrap too aggressively in a single-column table.
+
+\begin{table*}[t]
+\centering
+\caption{Example two-column comparison table}
+\label{tab:two-column-results}
+\begin{tabular}{p{0.18\textwidth}p{0.18\textwidth}p{0.16\textwidth}p{0.16\textwidth}p{0.20\textwidth}}
+\toprule
+\textbf{Variant} & \textbf{Input condition} & \textbf{Metric A} & \textbf{Metric B} & \textbf{Interpretation} \\
+\midrule
+Baseline & Default configuration and nominal workload & 1.00 & 74.2 ms & Reference point for the remaining variants. \\
+Optimized & Same workload with tuned parameters & 0.92 & 51.8 ms & Lower latency with similar output quality. \\
+Stress case & Burst workload and larger input size & 1.37 & 116.4 ms & Higher cost under heavier demand. \\
+Fallback & Dependency unavailable or degraded & 1.11 & 88.9 ms & Slower but still operational. \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
 \subsection{Equations}
 
-Equations should be introduced in prose and referenced when they matter. For instance, a threshold condition can be written as
+Equations should be introduced in prose and referenced when they matter. For instance, an average latency metric can be written as
 \begin{equation}
-  m \geq t + 2e,
-  \label{eq:threshold}
+  \bar{L} = \frac{1}{n}\sum_{i=1}^{n} L_i,
+  \label{eq:latency}
 \end{equation}
-where $m$ is the number of available shares, $t$ is the reconstruction threshold, and $e$ is the number of corrupted shares to be corrected. Equation~\eqref{eq:threshold} is useful only if the text explains how the implementation enforces or evaluates it.
+where $L_i$ is the latency observed in trial $i$ and $n$ is the number of trials. Equation~\eqref{eq:latency} is useful only if the text explains how measurements are collected, filtered, and interpreted.
