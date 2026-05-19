@@ -1,0 +1,21 @@
+\section{Writing Guidelines}
+
+\subsection{Abstract and Keywords}
+
+The abstract should state the problem, the method, and the result in one compact paragraph. For a course paper, it is acceptable to mention that the work is an implementation and evaluation rather than a new primitive. Avoid writing an abstract that only introduces the topic. A reader should understand what was built, what was measured, and what conclusion the paper reaches.
+
+Keywords should be specific enough to help classification. For example, a paper about authenticated firmware updates should use terms such as \textit{firmware signing}, \textit{secure boot}, \textit{post-quantum cryptography}, and \textit{downgrade resistance}. A paper about robust key recovery should use terms such as \textit{secret sharing}, \textit{Reed-Solomon codes}, \textit{AES key recovery}, and \textit{threshold cryptography}.
+
+\subsection{Problem Statement}
+
+A good problem statement should identify the failure mode being addressed. In cryptography papers, the failure mode may be key compromise, key loss, unauthorized decryption, downgrade attacks, replay attacks, weak randomness, side-channel leakage, or misuse of an API. The statement should then explain why the chosen mechanism addresses that failure mode. This prevents the paper from becoming a general survey with no concrete claim.
+
+\subsection{Design and Implementation}
+
+Design sections should describe abstractions and security goals. Implementation sections should describe concrete choices. For example, a design section may state that a system separates signing policy from package verification. The implementation section should then name the modules, fields, command-line options, and data files used to realize that separation.
+
+When presenting code-level work, avoid pasting long source listings. A short algorithm is useful when it clarifies control flow, but the repository should hold the complete implementation. The paper should explain decisions that are not obvious from code alone: why a parameter was selected, why a data format was chosen, what assumptions are made, and which cases are intentionally rejected.
+
+\subsection{Evaluation}
+
+Evaluation should connect back to the original claim. If the claim is performance, report runtime, memory use, bandwidth, or storage overhead. If the claim is correctness, report success and failure cases. If the claim is security posture, explain the attacker model and show how the construction changes the attack surface. Even a small experiment is stronger when it has explicit scenarios and expected outcomes.

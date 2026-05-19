@@ -1,0 +1,22 @@
+\section{Background}
+
+\subsection{IEEE Conference Style}
+
+IEEE conference papers use a dense two-column format intended for technical communication. Titles are centered, author metadata is placed below the title, abstracts are compact, and body sections are numbered automatically. The class file \texttt{IEEEtran.cls} handles most of these conventions. This template keeps the class file inside the \texttt{paper/} directory so compilation does not depend on a global LaTeX installation containing the exact same version.
+
+The reference repositories use XeLaTeX because their paper sources select Times New Roman when available and fall back to TeX Gyre Termes otherwise. That behavior is preserved here through \texttt{fontspec}. If a machine has Times New Roman installed, the output will match common IEEE-style typography closely. If it does not, TeX Gyre Termes provides a compatible serif font for local builds.
+
+\subsection{Cryptography Paper Expectations}
+
+A cryptography report should normally separate assumptions, construction, implementation, and evaluation. The background should define the primitives or protocols used by the work. The construction section should state what is being built. The implementation section should describe concrete modules, parameters, data formats, and execution flow. The evaluation section should report measured or simulated results rather than only restating theory. Even when a paper is short, this separation helps readers distinguish established knowledge from the author's contribution.
+
+Cryptographic notation should be explicit. For example, let $K$ denote a symmetric key, let $M$ denote a message, and let $C$ denote a ciphertext. An authenticated encryption interface can be summarized as
+\begin{equation}
+  C, T \leftarrow \operatorname{Enc}_{K}(N, A, M),
+  \label{eq:aead}
+\end{equation}
+where $N$ is a nonce, $A$ is associated data, and $T$ is an authentication tag. The corresponding verification and decryption operation should either return $M$ or reject. This level of notation is usually enough for a systems-oriented course paper, while a theory paper may require more formal definitions.
+
+\subsection{Reproducibility}
+
+Local reproducibility matters because a paper source is not complete until it can be compiled again. A repository should contain the main \texttt{.tex} file, section files, bibliography file, required figures, and any class files that are not guaranteed to exist in the default installation. Build artifacts such as \texttt{.aux}, \texttt{.log}, \texttt{.bbl}, and \texttt{.pdf} are intentionally ignored in this template. They can be regenerated from source and should not obscure meaningful changes in version control.

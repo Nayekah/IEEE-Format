@@ -1,0 +1,44 @@
+\section{Example Paper Skeleton}
+
+\subsection{Implementation-Oriented Paper}
+
+An implementation-oriented cryptography paper can use the following narrative arc. The introduction motivates a concrete operational problem, such as protecting firmware updates, recovering encrypted backups, or authenticating messages between constrained devices. The background then explains only the primitives needed by the implementation. If the paper uses AES-GCM, it should define nonce handling, authentication tags, and associated data. If the paper uses digital signatures, it should define key generation, signing, verification, and the security property expected from the scheme.
+
+The design section should describe the system boundary. For example, a firmware-signing report can distinguish the signing machine, update package, bootloader, policy metadata, and device state. A secret-sharing report can distinguish dealer, shareholder, recovery client, corrupted share model, and reconstruction threshold. Clear boundaries make evaluation easier because the paper can state which component is measured and which component is assumed.
+
+The implementation section should map the design to code. It should name the programming language, libraries, modules, data structures, and command-line entry points. A concise module table is often enough. The text should then explain details that affect correctness: serialization format, randomness source, error handling, parameter validation, and test scenario generation. These details are important because many cryptographic failures come from integration mistakes rather than from breaking the underlying primitive.
+
+The evaluation section should be organized around scenarios. A scenario describes the input condition, expected behavior, and observed result. For example, a verification system may test valid packages, modified payloads, stale versions, unknown signers, and unsupported algorithms. A threshold-recovery system may test enough shares, insufficient shares, missing shares, corrupted shares, and mixed missing-corrupted cases. Each scenario should have a reason to exist.
+
+\subsection{Analysis-Oriented Paper}
+
+An analysis-oriented paper can use a different structure. After the introduction and background, it may define a threat model, compare several candidate designs, and evaluate them against qualitative criteria. This is appropriate when the work studies protocol choices, deployment tradeoffs, or migration policies. The key requirement is that the comparison criteria are stated before conclusions are drawn. Criteria may include security assumption, key size, signature size, implementation maturity, compatibility, failure behavior, and migration risk.
+
+For example, a post-quantum migration paper might compare a classical-only policy, a post-quantum-only policy, an either-valid hybrid policy, and a both-required hybrid policy. The analysis should explain what each policy accepts, what each policy rejects, and which downgrade paths remain. Even if the measurements are simple, the paper becomes useful when it connects policy behavior to a concrete attacker goal.
+
+\subsection{Suggested Section Map}
+
+Table~\ref{tab:section-map} gives a reusable section map for a six-page course report. The page allocation is approximate and should be adjusted based on the assignment.
+
+\begin{table}[H]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\caption{Approximate six-page paper allocation}
+\label{tab:section-map}
+\begin{tabular}{@{}p{0.29\linewidth}p{0.17\linewidth}p{0.43\linewidth}@{}}
+\toprule
+\textbf{Part} & \textbf{Pages} & \textbf{Main purpose} \\
+\midrule
+Abstract and intro & 0.8--1.0 & State problem, method, and contribution. \\
+Background & 0.8--1.0 & Define primitives and assumptions. \\
+Design & 1.0 & Explain architecture and security goals. \\
+Implementation & 1.0 & Map design to concrete code and parameters. \\
+Evaluation & 1.2--1.5 & Report scenarios, measurements, and outcomes. \\
+Conclusion and admin & 0.5 & Summarize findings, repository, and statement. \\
+\bottomrule
+\end{tabular}
+\normalsize
+\end{table}
+
+This allocation avoids two common problems. The first is an oversized background section that leaves little room for the author's actual work. The second is an evaluation section that reports numbers without explaining why they matter. A balanced paper gives enough theory for context, but reserves space for design decisions, implementation constraints, and evidence.

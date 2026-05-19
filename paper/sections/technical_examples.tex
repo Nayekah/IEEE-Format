@@ -1,0 +1,64 @@
+\section{Technical Examples}
+
+\subsection{Algorithm Block}
+
+Algorithm~\ref{alg:template} shows a simple structure for documenting an experiment pipeline. The pseudocode is intentionally generic. Replace the setup, execution, and recording steps with the operations used by the real project.
+
+\begin{algorithm}[H]
+\caption{Generic Experiment Pipeline}
+\label{alg:template}
+\begin{algorithmic}[1]
+\Require Scenario set $S$, trial count $r$, random seed $seed$
+\Ensure Result table $R$
+\State Initialize deterministic randomness using $seed$
+\State $R \gets \emptyset$
+\ForAll{$s \in S$}
+  \For{$i \gets 1$ to $r$}
+    \State Generate input material for scenario $s$
+    \State Execute the implementation under test
+    \State Record success flag, runtime, and output size
+  \EndFor
+\EndFor
+\State \Return aggregate statistics in $R$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Figure Example}
+
+Figures should be readable in two-column format. Use vector graphics or high-resolution bitmap images when possible. This example uses \texttt{reiko.png} from the repository-level \texttt{images/} directory.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.88\linewidth]{../images/reiko.png}
+\caption{Example repository image included from \texttt{images/reiko.png}. Replace this asset with a project-specific figure when preparing the final paper.}
+\label{fig:architecture}
+\end{figure}
+
+\subsection{Result Table}
+
+Tables should use concise labels and avoid excessive grid lines. Table~\ref{tab:results} illustrates a compact evaluation table. The values are dummy numbers and should be replaced by real measurements.
+
+\begin{table}[H]
+\centering
+\caption{Example result table for a cryptography experiment}
+\label{tab:results}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Scenario} & \textbf{Trials} & \textbf{Success} & \textbf{Median ms} \\
+\midrule
+Baseline verification & 25 & 25 & 1.8 \\
+Large-message signing & 25 & 25 & 7.4 \\
+Corrupted input reject & 25 & 25 & 2.1 \\
+Insufficient material & 25 & 0 & 0.9 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Equations}
+
+Equations should be introduced in prose and referenced when they matter. For instance, a threshold condition can be written as
+\begin{equation}
+  m \geq t + 2e,
+  \label{eq:threshold}
+\end{equation}
+where $m$ is the number of available shares, $t$ is the reconstruction threshold, and $e$ is the number of corrupted shares to be corrected. Equation~\eqref{eq:threshold} is useful only if the text explains how the implementation enforces or evaluates it.

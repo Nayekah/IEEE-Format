@@ -1,0 +1,33 @@
+\section{Template Structure}
+
+\subsection{Repository Layout}
+
+The repository is organized around a \texttt{paper/} directory. The top-level \texttt{README.md} explains how to compile the document, while \texttt{paper/main.tex} defines the global document configuration. Section files live under \texttt{paper/sections/}. Bibliographic entries are stored in \texttt{paper/references.bib}. Optional figures can be placed in \texttt{images/} and referenced from the paper using relative paths.
+
+\begin{table}[H]
+\centering
+\caption{Main files in the template repository}
+\label{tab:layout}
+\begin{tabular}{p{0.34\linewidth}p{0.56\linewidth}}
+\toprule
+\textbf{Path} & \textbf{Purpose} \\
+\midrule
+\texttt{paper/main.tex} & Main IEEE document, packages, title, author, abstract, and section inputs. \\
+\texttt{paper/sections/} & One file per major paper section. \\
+\texttt{paper/references.bib} & BibTeX entries and IEEE bibliography control entry. \\
+\texttt{paper/IEEEtran.cls} & Local IEEEtran class file used by the document. \\
+\texttt{images/} & Optional figure and signature assets. \\
+\texttt{README.md} & Local compile instructions and editing notes. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Main Document}
+
+The main document imports packages that are commonly useful in cryptography papers. The \texttt{amsmath} packages support mathematical notation, \texttt{algorithm} and \texttt{algpseudocode} support pseudocode, \texttt{booktabs} supports clean tables, and \texttt{hyperref} provides link handling. The template also demonstrates how to include repository images using paths relative to \texttt{paper/main.tex}.
+
+The body of \texttt{main.tex} should stay short. It should contain metadata and the ordered list of \texttt{\textbackslash input} commands. Most prose belongs in section files. This keeps the document easy to scan and reduces merge conflicts if more than one person edits the paper.
+
+\subsection{Section Files}
+
+Each section file starts with a normal \texttt{\textbackslash section} command, except for unnumbered administrative sections such as acknowledgments, repository disclosure, and statement. A typical paper can replace the current generic sections with a domain-specific sequence such as introduction, background, threat model, design, implementation, evaluation, discussion, conclusion, and acknowledgment. The exact order is less important than making the reader's path through the argument clear.

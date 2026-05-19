@@ -1,0 +1,28 @@
+\section{Customization}
+
+\subsection{Replacing Metadata}
+
+Start customization in \texttt{paper/main.tex}. Replace the title, author block, affiliation, email addresses, abstract, and keywords. Keep the \texttt{\textbackslash maketitle} sequence and the page-style commands unless the assignment requires a different layout. The current footer follows the style of the reference repositories and can be edited in the \texttt{\textbackslash fancyfoot} command.
+
+\subsection{Changing Sections}
+
+The safest way to create a new paper is to rename or replace section files one at a time. After changing the file list, update the corresponding \texttt{\textbackslash input} commands in \texttt{main.tex}. Compile after every few changes. This catches missing braces, unresolved citations, and broken paths early.
+
+\subsection{Adding Figures}
+
+Place final image files in the repository-level \texttt{images/} directory. From a section file, reference them with a relative path such as:
+\footnotesize
+\begin{verbatim}
+\includegraphics{../images/diagram.png}
+\end{verbatim}
+\normalsize
+
+Keep figure captions descriptive. A caption should explain what the reader should notice, not merely repeat the figure label. If a figure is too wide for one column, IEEEtran supports \texttt{figure*}, but use it sparingly because wide floats can move far from the text that introduces them.
+
+\subsection{Managing References}
+
+Add references to \texttt{paper/references.bib} and cite them with \texttt{\textbackslash cite\{key\}}. Prefer primary sources for algorithms, standards, and protocols. For example, cite the AES standard for AES details \cite{fips197}, the GCM recommendation for authenticated encryption mode behavior \cite{sp80038d}, and the original paper for classical constructions where appropriate \cite{shamir1979}. This keeps the bibliography defensible and avoids relying on secondary summaries for technical claims.
+
+\subsection{Adapting the Length}
+
+The current draft is sized to demonstrate a short six-page conference-style paper. If an assignment has a strict page limit, adjust length by changing the density of examples rather than by changing margins or font size. IEEE formatting should remain stable. Remove optional examples, shorten tables, or move implementation details into the repository README when the paper is too long. Add evaluation discussion, limitations, and threat-model detail when the paper is too short.

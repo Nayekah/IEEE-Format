@@ -1,0 +1,42 @@
+\section{Local Compilation}
+
+\subsection{Recommended Toolchain}
+
+The recommended local build path is XeLaTeX plus BibTeX. On Windows, this can be installed through MiKTeX or TeX Live. The document uses \texttt{fontspec}, so \texttt{pdflatex} is not the right compiler for this template. Use \texttt{xelatex} instead.
+
+From the repository root, compile with the following commands:
+\begin{verbatim}
+cd paper
+xelatex main.tex
+bibtex main
+xelatex main.tex
+xelatex main.tex
+\end{verbatim}
+
+The repeated XeLaTeX passes are intentional. The first pass creates auxiliary citation data, BibTeX creates the bibliography, and the final passes resolve references, citations, and labels. The output PDF will be written to \texttt{paper/main.pdf}.
+
+\subsection{Latexmk Alternative}
+
+If \texttt{latexmk} is installed, the build can be shortened to:
+\begin{verbatim}
+cd paper
+latexmk -xelatex main.tex
+\end{verbatim}
+
+To clean generated files while keeping the PDF, run:
+\begin{verbatim}
+latexmk -c main.tex
+\end{verbatim}
+
+To remove generated files including the PDF, run:
+\begin{verbatim}
+latexmk -C main.tex
+\end{verbatim}
+
+\subsection{Tectonic Note}
+
+Tectonic can also compile many XeLaTeX documents, but BibTeX workflows may differ by installation and bundle state. If Tectonic is used, verify that citations and the bibliography appear correctly in the final PDF. For this template, the most predictable local path remains XeLaTeX followed by BibTeX and two additional XeLaTeX passes.
+
+\subsection{Common Build Problems}
+
+If LaTeX reports that \texttt{IEEEtran.cls} is missing, confirm that compilation is executed from the \texttt{paper/} directory or that the local class file still exists. If the compiler rejects \texttt{fontspec}, the command is probably using \texttt{pdflatex}; switch to \texttt{xelatex}. If citations appear as question marks, run BibTeX and then rerun XeLaTeX twice. If a figure path fails, check whether paths are relative to \texttt{paper/main.tex}; figures in the repository-level \texttt{images/} directory should be referenced as \texttt{../images/name.png}.

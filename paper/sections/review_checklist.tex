@@ -1,0 +1,28 @@
+\section{Review Checklist}
+
+\subsection{Before Writing}
+
+Before replacing this template with a real topic, define the paper's core claim in one sentence. A claim such as ``this implementation compares two signature schemes for firmware updates'' is easier to evaluate than a broad theme such as ``post-quantum cryptography is important.'' The claim determines which background material is necessary, which experiments should be included, and which results are relevant.
+
+The writer should also identify the expected reader. A classmate may need more implementation context, while a cryptography instructor may expect clearer assumptions and stronger references. The template does not force one level of detail, but it provides enough structure to support either emphasis.
+
+\subsection{Before Submission}
+
+Use the following checks before considering the paper complete:
+\begin{enumerate}
+\item The abstract states the problem, method, and result.
+\item Every nontrivial technical claim has a citation, derivation, or experiment.
+\item All figures and tables are referenced from the text before or near their placement.
+\item All citations resolve and the bibliography appears in IEEE style.
+\item The repository link points to the final public or private repository expected by the assignment.
+\item The statement section reflects the required academic integrity wording.
+\item The PDF was regenerated from a clean local compile, not from a stale build artifact.
+\end{enumerate}
+
+This checklist is intentionally practical. Formatting errors are usually easy to fix, but missing claims, unclear assumptions, and unsupported results are harder to repair near a deadline. A short review pass focused on those issues improves the paper more than repeated cosmetic editing.
+
+\subsection{Version Control Hygiene}
+
+Generated LaTeX files should not be committed unless the course explicitly asks for the final PDF in the repository. The source of truth is the combination of \texttt{main.tex}, section files, references, figures, and README instructions. Keeping generated files out of commits makes it easier to review the actual writing and prevents large binary diffs from hiding meaningful changes.
+
+When working over multiple sessions, compile before stopping and check the git status. A clean build confirms that the next editing session starts from a known-good source tree. If a section is incomplete, leave a clear placeholder paragraph rather than a broken command or missing file input.
